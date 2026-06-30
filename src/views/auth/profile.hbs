@@ -1,0 +1,54 @@
+<div class="container p-2 mb-5">
+    <div class="row  text-center">
+        {{#if tickets}}
+        <div class="col-md-5 mx-auto mb-3">
+            <a type="button" href="/tickets/list/activos/{{user.id}}" class="btn btn-danger">
+                Tienes <span class="badge text-bg-secondary">{{tickets.length}}</span> tickets activos
+            </a>
+        </div>
+
+        <div class="col-md-12 mx-auto">
+            <table class="table table-bordered table-danger table-sm" style="white-space: nowrap; overflow-x: auto;">
+                <tr>
+                    <th class="text-center" colspan="6">Tiene los siguientes tickets activos </th>
+                </tr>
+                {{#each tickets}}
+                <tr class="text-center">
+                    <th class="d-none d-sm-block">Id:{{this.ticket_id}}</th>
+                    <th> <a href="/aton/plantilla/{{ this.nif }} ">{{ this.nif }}</a> </th>
+                    <th>{{this.titulo}}</th>
+                    <th>{{this.descripcion}}</th>
+                    <th class="d-none d-sm-block">Creada {{timeagoSp this.created_at}}</th>
+                    <th> <a href="/tickets/edit/{{this.ticket_id}}" class="text-primary"><i
+                                class="fa-solid fa-pen-to-square"></i>Ver</a></th>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+        {{/if}}
+        <div class="col-md-8 mx-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Hola {{user.full_name}}</h3>
+                    {{>avatarL}}
+                    <p>Nombre: {{user.full_name}} </p>
+                    <p>Usuario: {{user.usuario}} </p>
+                    <p>Correo: {{user.email}} </p>
+                    <p>Privilegio: {{user.privilegio}} </p>
+                    <div>
+                        <a href="/profile/edit" class="btn btn-warning m-1">Editar mi Perfil</a>
+                    </div>
+
+                    <div><a href="/aton/list" class="btn btn-primary  m-4">Ver el balizamiento</a></div>
+                    <div> <a href="/tickets/list/activos/{{user.id}}" class="btn btn-secondary m-1">Ver mis tickets
+                            activos</a> </div>
+                    <div> <a href="/tickets/list/cerrados/{{user.id}}" class="btn btn-secondary m-1">Ver mis tickets
+                            cerrados</a> </div>
+                    <hr>
+                    <div><a href="/profile/delete/{{user.id}}" class="btn btn-danger m-1">Eliminar Perfil</a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div id="myModalCerrarPreventivo" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close text-right" onclick="cierraModal();">&times;</span>
+      <div class="text-center">
+        <h4>Está a punto de cerrar el preventivo</h4>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p>Esta Ud. seguro??? </p>
+      <p>
+        Esto conlleva dar por finalizado el preventivo <span
+          id="cerrarpreventivoidmodal">{{preventivo.preventivo_id}}</span> del AtoN con NIF: <span
+          id="cerrarpreventivonifmodal">{{preventivo.nif}}</span> de la BBDD, y ya no podrá modificarse.</p>
+    </div>
+    <div class="modal-footer">
+
+      <button onclick="document.getElementById('myModalCerrarPreventivo').style.display = 'block';"
+        class="btn btn-danger" type="submit" name="accion" value="Cerrar">✅ Cerrar
+        Preventivo</button>
+      <a onclick="cierraModal();" class="btn btn-warning">Cancelar</a>
+    </div>
+  </div>
+</div>

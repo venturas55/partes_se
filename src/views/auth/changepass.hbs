@@ -1,0 +1,41 @@
+<div class="container p-4 mb-4">
+  <div class="row my-4">
+    <div class="col-lg-6 mx-auto mb-4">
+      <div class="card text-center">
+        <div class="card-body">
+
+            <div class="form-group mb-4">
+              <h2>MODIFICCIÓN DE LA CONTRASEÑA</h2>
+            </div>
+
+            <form action="/profile/changepass/" method="POST">
+              <div class="form-group">
+                <input type="hidden" name="id" value="{{user.id}}" />
+              </div>
+                <hr>
+              <div class="form-group">
+                <label for="oldcontrasena">Contraseña actual
+                  <input type="password" name="oldcontrasena" class="form-control" required /></label>
+                <hr>
+                <label for="newcontrasena">Nueva Contraseña
+                  <input type="password" placeholder="Nueva contraseña" name="newcontrasena" id="password" required
+                   class="form-control inputpassvalidate"  /></label>
+                <label for="newcontrasena2">Confirme Contraseña
+                  <input type="password" placeholder="Repita contraseña" name="newcontrasena2" id="confirmPassword" required
+                    class="form-control inputpassvalidate"  /></label>
+                          <div class="form-group mb-4">
+              <p id="message">a</p>
+            </div>
+
+              </div>
+  <hr>
+              <button class="btn btn-primary m-4 btn-sm">
+                Guardar cambios
+              </button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

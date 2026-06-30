@@ -1,0 +1,231 @@
+<div class="container mt-4">
+
+  <!-- CABECERA PARTE -->
+  <div class="card mb-3 shadow-sm">
+    <div class="card-body">
+
+      <h4 class="mb-1">
+        Parte #{{parte.id_parte}} - {{formatearSp parte.fecha}}
+      </h4>
+
+      <span class="badge bg-primary">
+        Turno: {{parte.turno}}
+      </span>
+
+      <p class="mt-2 mb-0 text-muted">
+        OBSERVACIONES: {{parte.observaciones}}
+      </p>
+
+
+
+      {{#each usuarios}}
+      <p class="d-inline-block">
+        <span class="badge bg-secondary">{{usuario}}</span>
+      </p>
+      {{/each}}
+
+      <div>
+        <a class="btn btn-warning btn-sm" href="/partes/editar/{{parte.id_parte}}">
+          Editar
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LISTADO DE TAREAS -->
+  <div class="card shadow-sm">
+
+    <div class="card-header bg-dark text-white">
+      Tareas del parte
+    </div>
+
+    <div class="card-body p-0">
+
+      {{#if tareas.length}}
+
+      <table class="table table-hover mb-0 align-middle">
+
+        <thead class="table-light">
+          <tr>
+            <th>Descripción</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th width="180">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {{#each tareas}}
+          <tr>
+
+            <td>{{this.descripcion}}</td>
+
+            <td>{{formatearHora this.fecha_inicio}}</td>
+
+            <td>{{ formatearHora this.fecha_fin}}</td>
+
+            <td>
+
+              <!-- EDITAR -->
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{this.id_tarea}}">
+                Editar
+              </button>
+
+              <!-- ELIMINAR -->
+              <form action="/tareas/{{this.id_tarea}}/delete" method="POST" class="d-inline">
+                <button class="btn btn-danger btn-sm">
+                  Borrar
+                </button>
+              </form>
+
+            </td>
+
+          </tr>
+
+          <!-- MODAL EDITAR -->
+          <div class="modal fade" id="edit{{this.id_tarea}}" tabindex="-1">
+
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <form action="/tareas/{{this.id_tarea}}/edit" method="POST">
+                  <input type="hidden" name="id_parte" value="{{../parte.id_parte}}">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Editar tarea</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+
+                  <div class="modal-body">
+
+                    <div class="mb-3">
+                      <label>Descripción</label>
+                      <textarea name="descripcion" class="form-control">{{this.descripcion}}</textarea>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <label>Inicio</label>
+                        <input type="time" name="hora_inicio" class="form-control"
+                          value="{{formatearHora this.fecha_inicio}}">
+                      </div>
+
+                      <div class="col">
+                        <label>Fin</label>
+                        <input type="time" name="hora_fin" class="form-control"
+                          value="{{formatearHora this.fecha_fin}}">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn btn-primary">Guardar</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+
+          {{/each}}
+          <tr>
+            {{#if adjuntos.length}}
+            <ul>
+              {{#each adjuntos}}
+              <li>
+                <a href="/{{ruta}}" target="_blank">
+                  {{nombre}}
+                </a>
+              </li>
+              {{/each}}
+            </ul>
+
+            {{/if}}
+          </tr>
+
+        </tbody>
+
+      </table>
+
+
+      {{else}}
+
+      <div class="p-3 text-center text-muted">
+        No hay tareas todavía
+      </div>
+
+      {{/if}}
+      <div class="mt-4 text-center">
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalNuevaTarea">
+          Añadir nueva tarea
+        </button>
+      </div>
+    </div>
+    <!-- FORMULARIO NUEVA TAREA -->
+  </div>
+
+  <div class="card shadow-sm mt-2 text-center p-4">
+    <form action="/partes/cerrar/parte/{{parte.id_parte}}" method="POST" class="d-inline">
+      <button class="btn btn-danger btn-sm">
+        COMUNICAR PARTE
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalNuevaTarea" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <form action="/partes/{{parte.id_parte}}/tareas/add" method="POST" enctype="multipart/form-data">
+
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Nueva tarea</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea name="descripcion" class="form-control" rows="2" required></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">Inicio</label>
+              <input type="time" name="hora_inicio" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Fin</label>
+              <input type="time" name="hora_fin" class="form-control">
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <label class="form-label">Adjunto</label>
+            <input type="file" name="adjunto" class="form-control">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button class="btn btn-success">
+            Añadir tarea
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+DB_HOST=localhost
+DB_USER=userDB
+DB_PASS=passDB
+DB_NAME=dbdatabasename
+DB_PORT = 3306,
+PORT=5001
+EMAIL_SERVICE=servicenameemailserver
+EMAIL_HOST=hostmeilaserver
+EMAIL_ACCOUNT=email@adress.es
+EMAIL_PORT=emailport587
+EMAIL_SECURITY=false
+EMAIL_AUTH_NEEDED=true   <=Only false if no auth account is used
+EMAIL_PASS= yourpass  
+NODE_DOCKER_PORT = 5002
+MYSQL_LOCAL_PORT = 3307
+MYSQL_DOCKER_PORT = 3306

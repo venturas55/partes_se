@@ -1,0 +1,93 @@
+<div class="container mt-4">
+
+    <h2>Modificar Parte #{{parte.id_parte}}</h2>
+
+    <form method="POST" action="/partes/editar/{{parte.id_parte}}">
+
+        <div class="mb-3">
+            <label class="form-label">Fecha</label>
+            <input
+                type="date"
+                class="form-control"
+                name="fecha"
+                value="{{formatearEn parte.fecha}}"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Turno</label>
+
+            <select class="form-select" name="turno" required>
+
+                <option value="m"
+                    {{#if (eq parte.turno "m")}}selected{{/if}}>
+                    Mañana
+                </option>
+
+                <option value="t"
+                    {{#if (eq parte.turno "t")}}selected{{/if}}>
+                    Tarde
+                </option>
+
+                <option value="n"
+                    {{#if (eq parte.turno "n")}}selected{{/if}}>
+                    Noche
+                </option>
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Observaciones</label>
+
+            <textarea
+                class="form-control"
+                rows="5"
+                name="observaciones"
+            >{{parte.observaciones}}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                Usuarios asignados
+            </label>
+
+            <div class="border rounded p-3">
+
+                {{#each usuarios}}
+                <div class="form-check">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="usuarios"
+                        value="{{id}}"
+                        id="usuario{{id}}"
+                        {{#if checked}}checked{{/if}}
+                    >
+
+                    <label
+                        class="form-check-label"
+                        for="usuario{{id}}"
+                    >
+                        {{full_name}}
+                    </label>
+
+                </div>
+                {{/each}}
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Guardar cambios
+        </button>
+
+        <a href="/partes/list" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+    </form>
+
+</div>

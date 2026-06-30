@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between px-4">
+    <div class="container-fluid">
+        <div class="d-flex flex-column p-0 m-0">
+            <div>
+                <a class="navbar-brand d-none d-sm-inline" href="/partes/list">PARTES SE</a>
+            </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestion
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/partes/list">Ver Partes</a>
+                        <a class="dropdown-item" href="/partes/add">Crear Parte</a>
+                        <a class="dropdown-item" href="/tareas/list">Buscar tarea</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/tickets/list">(DEV)Ver Tickets</a>
+                        <a class="dropdown-item" href="/tickets/add"> (DEV)Crear ticket</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/mantenimientopreventivo/list">(DEV)Ver Preventivos</a>
+                        <a class="dropdown-item" href="/mantenimientopreventivo/add">(DEV)Crear Preventivo</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/documentos">(DEV)Documentos e Informes</a>
+                        <a class="dropdown-item" href="/documentoUpload">(DEV)Subir nuevo Documentos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/profile">Perfil</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </ul>
+                </li>
+                {{/if}}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" onclick="history.back();" tabindex="-1"
+                        aria-disabled="true">Volver</a>
+                </li>
+
+                {{#if user}}
+                <li class="nav-item dropdown d-none d-xl-inline">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" data-bs-display="static" aria-expanded="false">
+                        API
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/api/partes">API todos partes</a>
+                        <a class="dropdown-item" href="/api/parte/5">API solo un parte</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/api/usuarios">API usuarios</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/api/logs/errors">Log errores</a>
+                    </ul>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+        <div class="">
+            <ul class="navbar-nav ml-auto mx-4">
+                {{#if user}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" tabindex="-1" aria-disabled="true">Logout</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin" tabindex="-1" aria-disabled="true">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup" tabindex="-1" aria-disabled="true">Sign up</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+        <div class="d-none d-sm-block">
+            <a href="http://www.valenciaport.com" target="_blank"> <img class="SVG-white-logo" src="/img/logo-APV.svg"
+                    alt="APV logo"></a>
+        </div>
+    </div>
+</nav>

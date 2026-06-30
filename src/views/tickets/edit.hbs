@@ -1,0 +1,145 @@
+<div class="container p-2 mb-4">
+    {{#if ticket.solved_at}}
+    <div class="row">
+        <div class="col-lg-8 mx-auto py-4">
+            <div class="card pb-4 ">
+                <div class="card-header text-center">
+                    <h2> Información del Ticket nº {{ticket.ticket_id}} </h2>
+                </div>
+                <div class="card-body py-4">
+                    <div class="form-group">
+                        <label for="created_by_id">Creado por {{users.created_by}}</label>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="item">AtoN NIF</label>
+                        <input value="{{ticket.nif}}" class="pinchable" type="text" name="nif" placeholder="nif"
+                            disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="titulo">Trabajo pendiente</label><input value="{{ticket.titulo}}"
+                            class="form-control" type="text" name="titulo" placeholder="titulo" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Trabajo realizado</label><input value="{{ticket.descripcion}}"
+                            class="form-control" type="text" name="descripcion" placeholder="descripcion" disabled />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assigned_to">La tarea asignada a {{users.assigned_to}}</label>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="resolved_by">y finalmente resuelta por {{users.resolved_by}} {{timeagoSpCerrado
+                            ticket.solved_at}} </label>
+                    </div>
+                </div>
+                {{!-- {{#if ticket.resolved_by_id}} --}}
+
+                <a class="btn btn-secondary m-2" onclick="history.back();">Volver</a>
+                {{!-- {{/if}} --}}
+            </div>
+            <hr>
+            <div class="text-center">
+                <a class="btn btn-outline-danger btn-sm m-2 mt-4" href="/tickets/delete/{{ticket.ticket_id}}">🗑️ Borrar</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="row">
+        <div class="col-lg-8 mx-auto pb-4">
+            <div class="card pb-4 shadow-lg rounded-4">
+                <div class="card-header text-center  bg-primary text-white rounded-top-4">
+                    <h2> Edición del Ticket nº {{ticket.ticket_id}} </h2>
+                </div>
+                <div class="card-body pb-4">
+                    {{!-- <h1> Ticket </h1> --}}
+                    <p>Creado por <strong>{{users.created_by}}</strong> en AtoN NIF <a
+                            href='/aton/plantilla/{{ticket.nif}}'><strong>{{ticket.nif}}</strong></a> </p>
+                    <p></p>
+                    <p>Trabajo pendiene: <strong>{{ticket.titulo}}</strong></p>
+
+                    <form action="/tickets/edit/{{ticket.ticket_id}}" method="POST">
+                        <div class="form-group">
+
+                            {{!-- <label for="ticket_id">ticket ID: </label> --}}
+                            <input type="hidden" value="{{ticket.ticket_id}}" class="form-control" name="ticket_id"
+                                readonly />
+                            {{!-- 'readonly' permite enviar en los parametros del formulario. 'disabled' NO lo
+                            permite!!!! --}}
+                        </div>
+                        <div class="form-group">
+                            {{!-- <label for="created_by_id">Creado por </label> --}}
+                            <input type="hidden" value="{{users.created_by}}" class="form-control" name="created_by_id"
+                                placeholder="created_by_id" readonly />
+                        </div>
+                        <div class="form-group">
+                            {{!-- <label for="item">AtoN NIF</label> --}}
+                            <input value="{{ticket.nif}}" class="form-control pinchable" type="hidden" name="nif"
+                                placeholder="nif" readonly />
+
+                        </div>
+                        <div class="form-group">
+                            {{!-- <label for="titulo">Trabajo pendiente</label> --}}
+                            <input value="{{ticket.titulo}}" class="form-control" type="hidden" name="titulo"
+                                placeholder="titulo" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="assigned_to">Tarea asignada a </label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select form-select form-select-sm" name="assigned_to_id"
+                                    id="input_assigned_to_id" aria-label=".form-select-sm example">
+                                    <option value=""> Selecciona</option>
+                                    {{#each usuarios}}
+                                    <option value="{{this.id}}" {{#when this.id 'eq' ../ticket.assigned_to_id }}
+                                        selected {{/when}}>
+                                        {{this.usuario}} </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion">Trabajo realizado</label><input value="{{ticket.descripcion}}"
+                                class="form-control" type="text" name="descripcion" placeholder="descripcion" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="resolved_by">Tarea resuelta por {{users.resolved_by}}</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select form-select form-select-sm" name="resolved_by_id"
+                                    id="input_resolved_by_id" aria-label=".form-select-sm example">
+                                    <option value="">Selecciona</option>
+                                    {{#each usuarios}}
+                                    <option value="{{this.id}}" {{#when this.id 'eq' ../ticket.resolved_by_id }}
+                                        selected {{/when}}>
+                                        {{this.usuario}} </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
+                        </div>
+                        <!-- Botón Guardar -->
+                        <div class="text-center mb-2">
+                            <button type="submit" class="btn btn-primary px-4">Guardar</button>
+                        </div>
+                    </form>
+                    <!-- Botón Cerrar Ticket (si aplica) -->
+                    {{#if ticket.resolved_by_id}}
+                    {{#if ticket.descripcion}}
+                    <form action="/tickets/cerrar/{{ticket.ticket_id}}" method="POST" class="text-center mb-3">
+                        <button type="submit" class="btn btn-warning px-4">Cerrar Ticket</button>
+                    </form>
+                    {{/if}}
+                    {{/if}}
+
+                    <!-- Botón Volver -->
+                    <div class="text-center">
+                        <button class="btn btn-secondary px-4  mt-2" onclick="history.back();">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>

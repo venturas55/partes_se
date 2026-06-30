@@ -1,0 +1,472 @@
+<div class="border border-primary rounded estructura p-2 m-2">
+    <div class="form-group">
+        <label for="titulo">Estado</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_estado" id="estructura_estado1" value="ok"
+                checked />
+            <label class="form-check-label" for="estructura_estado1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_estado" id="estructura_estado2" value="ko"
+                {{#when ultimoPreventivo.estructura_estado 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_estado2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_estado" id="estructura_estado3" value="na"
+                {{#when ultimoPreventivo.estructura_estado 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_estado3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Marca de Tope</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_marca_tope" id="estructura_marca_tope1"
+                value="ok" checked />
+            <label class="form-check-label" for="estructura_marca_tope1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_marca_tope" id="estructura_marca_tope2"
+                value="ko" {{#when ultimoPreventivo.estructura_marca_tope 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_marca_tope2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_marca_tope" id="estructura_marca_tope3"
+                value="na" {{#when ultimoPreventivo.estructura_marca_tope 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_marca_tope3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Engrase</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_engrase" id="estructura_engrase1" value="ok"
+                checked />
+            <label class="form-check-label" for="estructura_engrase1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_engrase" id="estructura_engrase2" value="ko"
+                {{#when ultimoPreventivo.estructura_engrase 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_engrase2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_engrase" id="estructura_engrase3" value="na"
+                {{#when ultimoPreventivo.estructura_engrase 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_engrase3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Golpes</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_golpes" id="estructura_golpes1" value="ok"
+                checked />
+            <label class="form-check-label" for="estructura_golpes1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_golpes" id="estructura_golpes2" value="ko"
+                {{#when ultimoPreventivo.estructura_golpes 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_golpes2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_golpes" id="estructura_golpes3" value="na"
+                {{#when ultimoPreventivo.estructura_golpes 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_golpes3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Flotador</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_flotador" id="estructura_flotador1" value="ok"
+                checked />
+            <label class="form-check-label" for="estructura_flotador1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_flotador" id="estructura_flotador2" value="ko"
+                {{#when ultimoPreventivo.estructura_flotador 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_flotador2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_flotador" id="estructura_flotador3" value="na"
+                {{#when ultimoPreventivo.estructura_flotador 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_flotador3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Limpieza Interior</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_limpieza_interior"
+                id="estructura_limpieza_interior1" value="ok" checked />
+            <label class="form-check-label" for="estructura_limpieza_interior1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_limpieza_interior"
+                id="estructura_limpieza_interior2" value="ko" {{#when
+                ultimoPreventivo.estructura_limpieza_interior 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_limpieza_interior2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_limpieza_interior"
+                id="estructura_limpieza_interior3" value="na" {{#when
+                ultimoPreventivo.estructura_limpieza_interior 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_limpieza_interior3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Limpieza Exterior</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_limpieza_exterior"
+                id="estructura_limpieza_exterior1" value="ok" checked />
+            <label class="form-check-label" for="estructura_limpieza_exterior1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_limpieza_exterior"
+                id="estructura_limpieza_exterior2" value="ko" {{#when
+                ultimoPreventivo.estructura_limpieza_exterior 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_limpieza_exterior2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_limpieza_exterior"
+                id="estructura_limpieza_exterior3" value="na" {{#when
+                ultimoPreventivo.estructura_limpieza_exterior 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_limpieza_exterior3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">cuadro Electrico Interior</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_cuadro_interior"
+                id="estructura_cuadro_interior1" value="ok" checked />
+            <label class="form-check-label" for="estructura_cuadro_interior1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_cuadro_interior"
+                id="estructura_cuadro_interior2" value="ko" {{#when
+                ultimoPreventivo.estructura_cuadro_interior 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_cuadro_interior2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_cuadro_interior"
+                id="estructura_cuadro_interior3" value="na" {{#when
+                ultimoPreventivo.estructura_cuadro_interior 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_cuadro_interior3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">cuadro Electrico Exterior</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_cuadro_exterior"
+                id="estructura_cuadro_exterior1" value="ok" checked />
+            <label class="form-check-label" for="estructura_cuadro_exterior1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_cuadro_exterior"
+                id="estructura_cuadro_exterior2" value="ko" {{#when
+                ultimoPreventivo.estructura_cuadro_exterior 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_cuadro_exterior2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="estructura_cuadro_exterior"
+                id="estructura_cuadro_exterior3" value="na" {{#when
+                ultimoPreventivo.estructura_cuadro_exterior 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="estructura_cuadro_exterior2">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="item">Observaciones Sobre la estructura</label>
+        <textarea class="form-control"
+            name="estructura_observaciones">{{ultimoPreventivo.estructura_observaciones}}</textarea>
+    </div>
+    <input type="file" class="form-control-file" name="foto_estructura" id="foto_estructura">
+
+</div>
+<div class=" border border-primary rounded linterna p-2 m-2">
+    <div class="form-group">
+        <label for="titulo">Encendido LDR1</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_ldr1" id="linterna_ldr11" value="ok" checked />
+            <label class="form-check-label" for="linterna_ldr11">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_ldr1" id="linterna_ldr12" value="ko" {{#when
+                ultimoPreventivo.linterna_ldr1 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_ldr12">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_ldr1" id="linterna_ldr13" value="na" {{#when
+                ultimoPreventivo.linterna_ldr1 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_ldr13">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Encendido LDR2</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_ldr2" id="linterna_ldr21" value="ok" checked />
+            <label class="form-check-label" for="linterna_ldr21">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_ldr2" id="linterna_ldr22" value="ko" {{#when
+                ultimoPreventivo.linterna_ldr2 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_ldr22">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_ldr2" id="linterna_ldr23" value="na" {{#when
+                ultimoPreventivo.linterna_ldr2 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_ldr23">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Optica</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_optica" id="linterna_optica1" value="ok"
+                checked />
+            <label class="form-check-label" for="linterna_optica1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_optica" id="linterna_optica2" value="ko" {{#when
+                ultimoPreventivo.linterna_optica 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_optica2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_optica" id="linterna_optica3" value="na" {{#when
+                ultimoPreventivo.linterna_optica 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_optica3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Estanqueidad Tornillos</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_estanqueidad_tornillos"
+                id="linterna_estanqueidad_tornillos1" value="ok" checked />
+            <label class="form-check-label" for="linterna_estanqueidad_tornillos1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_estanqueidad_tornillos"
+                id="linterna_estanqueidad_tornillos2" value="ko" {{#when
+                ultimoPreventivo.linterna_estanqueidad_tornillos 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_estanqueidad_tornillos2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_estanqueidad_tornillos"
+                id="linterna_estanqueidad_tornillos3" value="na" {{#when
+                ultimoPreventivo.linterna_estanqueidad_tornillos 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_estanqueidad_tornillos3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Estanqueidad humedades</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_estanqueidad_humedades"
+                id="linterna_estanqueidad_humedades1" value="ok" checked />
+            <label class="form-check-label" for="linterna_estanqueidad_humedades1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_estanqueidad_humedades"
+                id="linterna_estanqueidad_humedades2" value="ko" {{#when
+                ultimoPreventivo.linterna_estanqueidad_humedades 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_estanqueidad_humedades2">KO</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="linterna_estanqueidad_humedades"
+                id="linterna_estanqueidad_humedades3" value="na" {{#when
+                ultimoPreventivo.linterna_estanqueidad_humedades 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="linterna_estanqueidad_humedades3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="item">Observaciones Sobre la linterna</label>
+        <textarea class="form-control"
+            name="linterna_observaciones">{{ultimoPreventivo.linterna_observaciones}}</textarea>
+    </div>
+    <input type="file" class="form-control-file" name="foto_linterna" id="foto_linterna">
+
+</div>
+<div class="border border-primary rounded telecontrol p-2 m-2">
+    <div class="form-group">
+        <label for="titulo">telecontrol_monitoreo</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="telecontrol_monitoreo" id="telecontrol_monitoreo1"
+                value="ok" checked />
+            <label class="form-check-label" for="telecontrol_monitoreo1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="telecontrol_monitoreo" id="telecontrol_monitoreo2"
+                value="ko" {{#when ultimoPreventivo.telecontrol_monitoreo 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="telecontrol_monitoreo2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="telecontrol_monitoreo" id="telecontrol_monitoreo3"
+                value="na" {{#when ultimoPreventivo.telecontrol_monitoreo 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="telecontrol_monitoreo3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">GPS</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="telecontrol_gps" id="telecontrol_gps1" value="ok"
+                checked />
+            <label class="form-check-label" for="telecontrol_gps1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="telecontrol_gps" id="telecontrol_gps2" value="ko" {{#when
+                ultimoPreventivo.telecontrol_gps 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="telecontrol_gps2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="telecontrol_gps" id="telecontrol_gps3" value="na" {{#when
+                ultimoPreventivo.telecontrol_gps 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="telecontrol_gps2">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="item">Observaciones Sobre Telecontrol</label>
+        <textarea class="form-control"
+            name="telecontrol_observaciones">{{ultimoPreventivo.telecontrol_observaciones}}</textarea>
+    </div>
+    <input type="file" class="form-control-file" name="foto_monitoreo" id="foto_monitoreo">
+</div>
+<div class="border border-primary rounded alimentacion p-2 m-2">
+    <div class="form-group">
+        <label for="titulo">Panel fotovoltaico</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_panelFV" id="alimentacion_panelFV1"
+                value="ok" checked />
+            <label class="form-check-label" for="alimentacion_panelFV1">OK</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_panelFV" id="alimentacion_panelFV2"
+                value="ko" {{#when ultimoPreventivo.alimentacion_panelFV 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_panelFV2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_panelFV" id="alimentacion_panelFV3"
+                value="na" {{#when ultimoPreventivo.alimentacion_panelFV 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_panelFV3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Red</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_red" id="alimentacion_red1" value="ok"
+                checked />
+            <label class="form-check-label" for="alimentacion_red1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_red" id="alimentacion_red2" value="ko"
+                {{#when ultimoPreventivo.alimentacion_red 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_red2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_red" id="alimentacion_red3" value="na"
+                {{#when ultimoPreventivo.alimentacion_red 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_red3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Capacidad en Ah</label>
+        <input type="number" name="alimentacion_ah" min="0" step="1" value="{{ultimoPreventivo.alimentacion_ah}}">
+    </div>
+    <div class="form-group">
+        <label for="titulo">Voltaje en V</label>
+        <input type="number" name="alimentacion_vcc" min="0" max="20" step="0.01"
+            value="{{ultimoPreventivo.alimentacion_vcc}}">
+    </div>
+    <div class="form-group">
+        <label for="titulo">Baterias</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_baterias" id="alimentacion_baterias1"
+                value="ok" checked />
+            <label class="form-check-label" for="alimentacion_baterias1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_baterias" id="alimentacion_baterias2"
+                value="ko" {{#when ultimoPreventivo.alimentacion_baterias 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_baterias2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_baterias" id="alimentacion_baterias3"
+                value="na" {{#when ultimoPreventivo.alimentacion_baterias 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_baterias3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Grupo Electrogeno</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_grupo" id="alimentacion_grupo1" value="ok"
+                checked />
+            <label class="form-check-label" for="alimentacion_grupo1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_grupo" id="alimentacion_grupo2" value="ko"
+                {{#when ultimoPreventivo.alimentacion_grupo 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_grupo2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_grupo" id="alimentacion_grupo3" value="na"
+                {{#when ultimoPreventivo.alimentacion_grupo 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_grupo3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Estado cableado</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_cableado" id="alimentacion_cableado1"
+                value="ok" checked />
+            <label class="form-check-label" for="alimentacion_cableado1">OK</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_cableado" id="alimentacion_cableado2"
+                value="ko" {{#when ultimoPreventivo.alimentacion_cableado 'eq' 'ko' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_cableado2">KO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="alimentacion_cableado" id="alimentacion_cableado3"
+                value="na" {{#when ultimoPreventivo.alimentacion_cableado 'eq' 'na' }} checked {{/when}} />
+            <label class="form-check-label" for="alimentacion_cableado3">N/A</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="item">Observaciones Sobre Alimentacion</label>
+        <textarea class="form-control"
+            name="alimentacion_observaciones">{{ultimoPreventivo.alimentacion_observaciones}}</textarea>
+    </div>
+    <input type="file" class="form-control-file" name="foto_alimentacion" id="foto_alimentacion">
+
+</div>
+<div class="border border-primary rounded form-group p-2 m-2">
+    <label for="item">Observaciones Generales</label>
+    <textarea class="form-control" rows="4" cols="50"
+        name="observaciones_generales">{{ultimoPreventivo.observaciones_generales}}</textarea>
+    <input type="file" class="form-control-file" name="foto_general" id="foto_general">
+</div>

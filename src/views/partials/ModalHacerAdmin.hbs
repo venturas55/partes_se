@@ -1,0 +1,24 @@
+<div id="modalAdmin" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close text-right" onclick="cierraModal();">&times;</span>
+      <div class="text-center">
+        <h4>INTRODUZCA LA CONTRASEÑA MAESTRA</h4>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p>Se le va a conceder permisos de administrador al usuario {{user.usuario}}. si esta seguro introduza la
+        contraseña maestra. </p>
+    </div>
+    <div class="modal-footer">
+      <form action="/doAdmin" method="post">
+        <input type="password" placeholder="" id="contrasenaConfirmacion" name="pass" />
+        <div class="card-body">
+          <button type="submit" class="btn btn-primary btn-sm">
+            GRANT</button>
+      </form>
+      <a onclick="cierraModal();" class="btn btn-danger btn-sm">
+        Cancelar</a>
+    </div>
+  </div>
+</div>

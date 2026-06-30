@@ -1,0 +1,8 @@
+<a href="/profile" class="text-decoration-none">
+    <img 
+        src="/img/profiles/{{#if user.pictureURL}}{{user.pictureURL}}{{else}}default.jpg{{/if}}" 
+        class="avatar avatar-s m-2 "
+        alt="avatar"
+        onerror="this.onerror=null; this.src='/img/profiles/default.jpg';"
+    />
+</a>

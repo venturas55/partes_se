@@ -1,0 +1,77 @@
+<div class="container mt-4">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Nuevo parte de trabajo</h5>
+        </div>
+
+        <div class="card-body">
+
+          <form action="/partes/add" method="POST">
+
+            <!-- Fecha -->
+            <div class="mb-3">
+              <label class="form-label">Fecha</label>
+              <input type="date" name="fecha" class="form-control" required>
+            </div>
+
+            <!-- Turno -->
+            <div class="mb-3">
+              <label class="form-label">Turno</label>
+              <select name="turno" class="form-select" required>
+                <option value="m">Mañana</option>
+                <option value="t">Tarde</option>
+                <option value="n">Noche</option>
+              </select>
+            </div>
+
+            <!-- Observaciones -->
+            <div class="mb-3">
+              <label class="form-label">Observaciones</label>
+              <textarea name="observaciones" class="form-control" rows="4"
+                placeholder="Notas generales del parte..."></textarea>
+            </div>
+
+            <!-- Usuarios asignados (checkbox dinámico) -->
+            <div class="mb-3">
+              <label class="form-label">Trabajadores</label>
+
+              <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
+
+                {{#each usuarios}}
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="usuarios" value="{{this.id}}"
+                    id="user{{this.id}}">
+                  <label class="form-check-label" for="user{{this.id}}">
+                    {{this.full_name}} ({{this.usuario}})
+                  </label>
+                </div>
+                {{/each}}
+
+              </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between">
+              <div class="d-grid gap-2">
+                <button type="button" onclick="history.back();" class="btn btn-outline-danger">
+                  <i class="fa fa-arrow-left me-1"></i> Volver
+                </button>
+                <button type="submit" class="btn btn-primary fw-bold">
+                  <i class="fa fa-save me-1"></i> Crear parte
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div id="myModalBorradoAbsoluto" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close text-right" onclick="cierraModal();">&times;</span>
+      <div class="text-center">
+        <h4>Está a punto de borrar toda la base de datos</h4>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p>Esta Ud. seguro??? </p>
+      <p>
+        Esto conlleva la eliminación completa de la BBDD, y ya no habrá marcha
+        atras. Se eliminan las siguientes propiedades</p>
+        <ul>
+          <li>Observaciones</li>
+          <li>Mantenimiento</li>
+          <li>Lampara</li>
+          <li>localizacion</li>
+          <li>Balizamiento</li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="/dbbackups/deleteAbsoluto" class="btn btn-danger">Borrar</a>
+      <a onclick="cierraModal();" class="btn btn-warning">Cancelar</a>
+    </div>
+  </div>
+</div>

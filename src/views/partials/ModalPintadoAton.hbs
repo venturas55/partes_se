@@ -1,0 +1,16 @@
+<div id="myModalPintado" class="modal">
+  <div class="modal-content">
+    <span class="close text-right" onclick="cierraModal();">&times;</span>
+    <div class="text-center">
+      <h4>Se ha pintado el AtoN: {{baliza.nif}}</h4>
+      <br />
+      <p>Esta Ud. seguro??? </p>
+      <p>
+        Esto anotará su pintado en la tabla mantenimiento con la fecha de hoy.</p>
+      <div class="card-body">
+        <a href="/aton/pintado/{{baliza.nif}}" class="btn btn-danger">Confirmar</a>
+        <a onclick="cierraModal();" class="btn btn-warning">Cancelar</a>
+      </div>
+    </div>
+  </div>
+</div>

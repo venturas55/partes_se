@@ -1,0 +1,1 @@
+Gestion de partes para SE

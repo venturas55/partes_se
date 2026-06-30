@@ -1,0 +1,74 @@
+<div class="container-fluid p-4 mb-3">
+    <h2>Listado de tareas</h2>
+    <div class="my-3">
+        <div class="row g-3">
+
+            <!-- Filtro de texto -->
+            <div class="col-sm-10 col-md-4">
+                <label for="myInput" class="form-label">Filtrar por texto</label>
+                <input class="form-control" id="myInput" type="text" placeholder="Filtrar por..." autofocus>
+            </div>
+
+            <!-- Filtro de mostrar/ocultar balizas apagadas -->
+{{!--             <div class="col-sm-5 col-md-3">
+                <label class="form-label invisible">Filtro</label>
+                <div class="d-grid">
+                    <button id="toggleApagadas" class="btn btn-outline-light btn-sm">
+                        <i class="fa fa-eye"></i> Ocultar balizas apagadas
+                    </button>
+                </div>
+            </div> --}}
+
+            <!-- Filtro adicional de Puerto -->
+            <div class="col-sm-5 col-md-3">
+                <label for="filtroTrabajador" class="form-label">Filtrar por trabajador</label>
+               <select id="filtroTrabajador" class="form-select">
+                    <option value="">-- Todos los trabajadores --</option>
+                    {{#each empleados}}
+                        <option value="{{id}}">
+                            {{full_name}}
+                        </option>
+                    {{/each}}
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="table-responsive pb-4">
+        <table id="listado" class="listado mx-auto w-100 table table-hover table-dark" data-search="true">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Trabajadores</th>
+                    <th>Parte</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tareas}}
+                <tr class="fila" data-usuarios='{{{usuarios}}}'  data-trabajadores="{{#each usuarios}}{{id}},{{/each}}">
+                    <td>{{id_tarea}}</td>
+                    <td>{{descripcion}}</td>
+                    <td>{{formatearSp fecha_inicio}}</td>
+                    <td>{{formatearHora fecha_inicio}}</td>
+                    <td>{{formatearHora fecha_fin}}</td>
+                    <td>
+    {{#each usuarios}}
+        <span class="badge bg-secondary">{{nombre}}</span>
+    {{/each}}
+</td>
+                    <td>
+                        <a href="/partes/{{id_parte}}">
+                            {{id_parte}}
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

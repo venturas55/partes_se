@@ -1,0 +1,20 @@
+<div id="myModalReabrirPreventivo" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close text-right" onclick="cierraModal();">&times;</span>
+      <div class="text-center">
+        <h4>Ha solicitado editar un preventivo ya cerrado.</h4>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p>Esta Ud. seguro??? </p>
+      <p>
+        Esto conlleva la reapertura del preventivo <span id="reabrirpreventivoidmodal">{{preventivo.preventivo_id}}</span> del AtoN con NIF: <span id="reabrirpreventivonifmodal">{{preventivo.nif}}</span>  de la BBDD, y ya no habrá marcha
+        atras.</p>
+    </div>
+    <div class="modal-footer">
+      <a id="refprevdel" href="/mantenimientopreventivo/reabrir/{{preventivo.preventivo_id}}" class="btn btn-danger">Reabrir</a>
+      <a onclick="cierraModal();" class="btn btn-warning">Cancelar</a>
+    </div>
+  </div>
+</div>

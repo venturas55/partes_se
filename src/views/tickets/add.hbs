@@ -1,0 +1,61 @@
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- Encabezado -->
+            <div class="text-center mb-4">
+                <h1 class="display-6 text-primary fw-bold">Crear nuevo ticket</h1>
+                <p class="text-muted">Completa los siguientes campos para registrar un nuevo ticket.</p>
+            </div>
+
+            <!-- Tarjeta del formulario -->
+            <div class="card shadow-sm border-0">
+                <div class="card-body px-4 py-5">
+
+                    <form action="/tickets/add" method="POST">
+
+                        <!-- NIF -->
+                        <div class="mb-3">
+                            <label for="nif" class="form-label fw-semibold">AtoN NIF</label>
+                            <input id="nif" value="{{nif}}" name="nif" type="text" class="form-control" placeholder="NIF del AtoN" required />
+                        </div>
+
+                        <!-- Trabajo a realizar -->
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label fw-semibold">Trabajo a realizar</label>
+                            <input id="titulo" name="titulo" type="text" class="form-control" placeholder="Título o breve descripción del trabajo" required />
+                        </div>
+
+                        <!-- Campo oculto para descripción -->
+                        <input type="hidden" name="descripcion" value="" />
+
+                        <!-- Asignado a -->
+                        <div class="mb-4">
+                            <label for="input_assigned_to_id" class="form-label fw-semibold">Asignar a</label>
+                            <select name="assigned_to_id" id="input_assigned_to_id" class="form-select">
+                                <option value="">Selecciona un usuario</option>
+                                {{#each usuarios}}
+                                <option value="{{this.id}}" {{#when this.id 'eq' ../ticket.assigned_to_id }}selected{{/when}}>
+                                    {{this.usuario}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary fw-bold">
+                                <i class="fa fa-save me-1"></i> Crear Ticket
+                            </button>
+                            <button type="button" onclick="history.back();" class="btn btn-outline-danger">
+                                <i class="fa fa-arrow-left me-1"></i> Volver
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

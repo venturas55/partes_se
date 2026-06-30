@@ -1,0 +1,109 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body text-center p-5">
+
+          <h3 class="mb-4">Editando tu perfil, @{{user.usuario}}</h3>
+
+          {{>avatar}}
+
+          <!-- Formulario de carga de imagen -->
+          <form action="/upload/{{user.id}}" method="POST" enctype="multipart/form-data" class="mt-4">
+            <input type="hidden" name="user" value="{{user.usuario}}" />
+            <div class="input-group mb-3">
+              <input type="file" name="imagen" class="form-control" id="inputGroupFile02">
+              <button type="submit" class="btn btn-outline-primary">Subir</button>
+            </div>
+          </form>
+
+          <!-- Eliminar foto -->
+          {{#if user.pictureURL}}
+          <a href="/profile/borrarfoto/{{user.id}}/{{user.pictureURL}}" class="btn btn-outline-danger btn-sm mb-3">
+            Eliminar foto de perfil
+          </a>
+          {{/if}}
+
+          <!-- Privilegio -->
+          {{#if user.privilegio}}
+          <p class="text-muted">Privilegio: <strong>{{user.privilegio}}</strong></p>
+          {{/if}}
+
+          <!-- Formulario de edición -->
+          <form action="/profile/edit/" method="POST" class="text-start mt-4">
+            <input type="hidden" name="id" value="{{user.id}}" />
+
+            <div class="form-floating mb-3">
+              <input type="text" name="full_name" id="full_name" value="{{user.full_name}}" class="form-control"
+                required>
+              <label for="full_name">Nombre completo</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" name="usuario" id="usuario" value="{{user.usuario}}" class="form-control">
+              <label for="usuario">Usuario</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" name="email" id="email" value="{{user.email}}" class="form-control">
+              <label for="email">Correo electrónico</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <select class="form-select" name="prefmap" id="prefmap">
+                <option value="Leaflet" {{#when "Leaflet" 'eq' user.prefmap }} selected {{/when}}>Leaflet</option>
+                <option value="Google" {{#when "Google" 'eq' user.prefmap }} selected {{/when}}>Google Maps</option>
+              </select>
+              <label for="prefmap">Tipo de mapa</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <select class="form-select" name="default_localizacion" id="default_localizacion">
+                <option value="valencia" {{#when "valencia" 'eq' user.default_localizacion }} selected {{/when}}>
+                  Valencia</option>
+                <option value="sagunto" {{#when "sagunto" 'eq' user.default_localizacion }} selected {{/when}}>Sagunto
+                </option>
+                <option value="gandia" {{#when "gandia" 'eq' user.default_localizacion }} selected {{/when}}>Gandia
+                </option>
+              </select>
+              <label for="default_localizacion">Puerto por defecto</label>
+            </div>
+
+            <div class="d-grid gap-2 d-md-block text-center">
+              <button class="btn btn-primary btn-sm">Guardar cambios</button>
+              <a href="/profile" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+            </div>
+            <div class="my-4 d-grid gap-2 d-md-block">
+              <p>Para cambiar la contraseña haz click <span> <a href="/profile/changepass" class="">aqui</a></span></p>
+            </div>
+
+          </form>
+
+          <!-- Opciones de privilegio -->
+          <div class="mt-4">
+            {{#if (esAdmin user.privilegio)}}
+            <button
+              onclick="document.getElementById('modalAdmin').style.display = 'block'; document.getElementById('privilegio').value = 'san';"
+              class="btn btn-warning btn-sm">Degradar a Técnico</button>
+            {{else if (esTecnico user.privilegio)}}
+            <button
+              onclick="document.getElementById('modalAdmin').style.display = 'block'; document.getElementById('privilegio').value = 'admin';"
+              class="btn btn-warning btn-sm">Hacer Admin</button>
+            <button
+              onclick="document.getElementById('modalAdmin').style.display = 'block'; document.getElementById('privilegio').value = '';"
+              class="btn btn-warning btn-sm">Eliminar privilegios</button>
+            {{else}}
+            <button
+              onclick="document.getElementById('modalAdmin').style.display = 'block'; document.getElementById('privilegio').value = 'san';"
+              class="btn btn-warning btn-sm">Hacer Técnico</button>
+            {{/if}}
+          </div>
+
+          <!-- Modal de privilegios -->
+          {{>ModalPrivilegios}}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

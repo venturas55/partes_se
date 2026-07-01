@@ -33,7 +33,7 @@ router.get('/list', async (req, res) => {
 
         p.usuarios = usuarios;
     }));
-console.log(partes);
+    //console.log(partes);
     res.render('partes/list', { partes });
 });
 
@@ -55,7 +55,7 @@ router.get('/add', funciones.isAuthenticated, async (req, res) => {
 router.post('/add', funciones.isAuthenticated, async (req, res) => {
     try {
         const { fecha, turno, observaciones, usuarios } = req.body;
-        console.log(req.body);
+        //console.log(req.body);
 
         // 1. Insertar el parte
         const result = await db.query(
@@ -66,10 +66,10 @@ router.post('/add', funciones.isAuthenticated, async (req, res) => {
 
         const id_parte = result.insertId;
 
-        console.log("Id parte:", id_parte)
+        //console.log("Id parte:", id_parte)
 
         // 2. Insertar usuarios en parte_usuarios (si existen)
-        console.log(usuarios);
+        //console.log(usuarios);
         if (usuarios) {
             // Si solo viene uno, lo convertimos a array
             const listaUsuarios = Array.isArray(usuarios)
@@ -106,7 +106,7 @@ router.get('/:id', async (req, res) => {
         'SELECT * FROM partes WHERE id_parte = ?',
         [id]
     );
-    console.log(parte);
+    //console.log(parte);
     const tareas = await db.query(
         'SELECT * FROM tareas WHERE id_parte = ? ORDER BY fecha_inicio asc',
         [id]
@@ -144,17 +144,17 @@ router.get('/editar/:id', async (req, res) => {
         'SELECT * FROM partes WHERE id_parte = ?',
         [id]
     );
-    console.log(parte);
+    //console.log(parte);
     const usuarios = await db.query(
         'SELECT * FROM usuarios ORDER BY full_name'
     );
-    console.log(usuarios);
+    //console.log(usuarios);
     const usuariosParte = await db.query(`
         SELECT *
         FROM parte_usuarios pu left join usuarios u on pu.id_usuario=u.id 
         WHERE pu.id_parte = ?
     `, [id]);
-    console.log(usuariosParte);
+    //console.log(usuariosParte);
     let seleccionados;
     if (usuariosParte)
         seleccionados = usuariosParte.map(u => u.id_usuario);
@@ -297,7 +297,6 @@ router.get('/noperm', (req, res) => {
 //MOSTRAR PRUEBA
 router.get("/runSQLfile/:filename", funciones.isAdmin, (req, res) => {
     let filename = req.params.filename + ".sql";
-    console.log("Ejecutando prueba");
     try {
 
         funciones.consultaPrueba(filename);
@@ -312,7 +311,6 @@ router.get("/runSQLfile/:filename", funciones.isAdmin, (req, res) => {
 router.post("/pruebaPost", funciones.isAdmin, async (req, res) => {
     var password = req.masterPass;
     userpass = req.body.pass;
-    //console.log("==>" + req.masterPass);
     const validPassword = await funciones.verifyPassword(userpass, password);
     if (validPassword) {
         funciones.consultaPrueba();
@@ -346,7 +344,6 @@ router.post('/cerrar/parte/:id_parte', async (req, res) => { //:email
         'SELECT * FROM parte_usuarios pu left join usuarios u on pu.id_usuario=u.id WHERE pu.id_parte = ?',
         [id_parte]
     );
-    console.log("PU:", usuarios);
     const usuariosHtml = usuarios
         .map(u => `<li>${u.full_name || u.usuario}</li>`)
         .join('');
